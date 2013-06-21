@@ -5,12 +5,14 @@ Listen [%(ip)s]:%(port)s
 # Needed modules
 LoadModule unixd_module "%(modules_dir)s/mod_unixd.so"
 LoadModule access_compat_module "%(modules_dir)s/mod_access_compat.so"
+LoadModule authn_core_module "%(modules_dir)s/mod_authn_core.so"
 LoadModule authz_core_module "%(modules_dir)s/mod_authz_core.so"
 LoadModule authn_file_module "%(modules_dir)s/mod_authn_file.so"
 LoadModule authz_host_module "%(modules_dir)s/mod_authz_host.so"
 LoadModule authz_user_module "%(modules_dir)s/mod_authz_user.so"
 LoadModule auth_basic_module "%(modules_dir)s/mod_auth_basic.so"
-LoadModule auth_digest_module "%(modules_dir)s/mod_auth_digest.so"
+# Comment auth_digest since we don't use it
+#LoadModule auth_digest_module "%(modules_dir)s/mod_auth_digest.so"
 LoadModule log_config_module "%(modules_dir)s/mod_log_config.so"
 LoadModule headers_module "%(modules_dir)s/mod_headers.so"
 LoadModule setenvif_module "%(modules_dir)s/mod_setenvif.so"
