@@ -38,7 +38,11 @@ allow-hosts +=
 parts =
   template
   lxml-python
+  apache
+  logrotate
+  dcron
   eggs
+  gzip
   instance-recipe-egg
 
 unzip= true
