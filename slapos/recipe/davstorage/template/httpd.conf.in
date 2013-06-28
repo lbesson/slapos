@@ -32,6 +32,11 @@ ServerAdmin %(email_address)s
 # Quiet Server header (if not, Apache give its life history)
 # It's safer
 ServerTokens ProductOnly
+PidFile "%(pid_file)s"
+
+
+SSLRandomSeed startup builtin
+SSLRandomSeed connect builtin
 
 <VirtualHost [%(ip)s]:%(port_ajax)s>
   #ServerName www.example.com
@@ -52,11 +57,14 @@ ServerTokens ProductOnly
   DocumentRoot "%(document_root)s"
   DirectoryIndex index.html index.php
 
+SSLEngine on
+SSLCertificateFile "%(ssl_certificate)s"
+SSLCertificateKeyFile "%(ssl_key)s"
+
 </VirtualHost>
 
 <VirtualHost [%(ip)s]:%(port_webdav)s>
 DocumentRoot "%(document_root)s"
-PidFile "%(pid_file)s"
 DavLockDB "%(davlock_db)s"
 
 <Directory />
@@ -93,6 +101,11 @@ DavLockDB "%(davlock_db)s"
     </LimitExcept>
 
 </Directory>
+
+SSLEngine on
+SSLCertificateFile "%(ssl_certificate)s"
+SSLCertificateKeyFile "%(ssl_key)s"
+
 </VirtualHost>
 
 ErrorLog "%(error_log)s"
@@ -106,9 +119,3 @@ DefaultType text/plain
 TypesConfig "%(mime_types)s"
 AddType application/x-compress .Z
 AddType application/x-gzip .gz .tgz
-
-SSLRandomSeed startup builtin
-SSLRandomSeed connect builtin
-SSLEngine on
-SSLCertificateFile "%(ssl_certificate)s"
-SSLCertificateKeyFile "%(ssl_key)s"
