@@ -87,7 +87,7 @@ class Recipe(GenericBaseRecipe):
 
     promise = self.createPythonScript(self.options['promise'],
       __name__ + '.promise',
-      dict(host=self.options['ip'], port=int(self.options['port']),
+      dict(host=self.options['ip'], port=int(self.options['port_webdav']),
            user=self.options['user'], password=self.options['password'])
                                      )
     path_list.append(promise)
