@@ -33,7 +33,7 @@ ServerAdmin %(email_address)s
 # It's safer
 ServerTokens ProductOnly
 
-<VirtualHost [%(ip)s]:%(port_ajax)>
+<VirtualHost [%(ip)s]:%(port_ajax)s>
   #ServerName www.example.com
   
   # Directory protection
