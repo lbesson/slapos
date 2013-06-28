@@ -1,6 +1,10 @@
 ServerRoot "%(server_root)s"
 
-Listen [%(ip)s]:%(port)s
+Listen [%(ip)s]:%(port_webdav)s
+Listen [%(ip)s]:%(port_ajax)s
+
+NameVirtualHost [%(ip)s]:%(port_webdav)s
+NameVirtualHost [%(ip)s]:%(port_ajax)s
 
 # Needed modules
 LoadModule unixd_module "%(modules_dir)s/mod_unixd.so"
@@ -29,6 +33,28 @@ ServerAdmin %(email_address)s
 # It's safer
 ServerTokens ProductOnly
 
+<VirtualHost [%(ip)s]:%(port_ajax)>
+  #ServerName www.example.com
+  
+  # Directory protection
+  <Directory />
+      Options FollowSymLinks
+      AllowOverride None
+      Require all denied
+  </Directory>
+  
+  <Directory %(document_root)s>
+    Options FollowSymLinks
+    AllowOverride All
+    Require all granted
+  </Directory>
+  
+  DocumentRoot "%(document_root)s"
+  DirectoryIndex index.html index.php
+
+</VirtualHost>
+
+<VirtualHost [%(ip)s]:%(port_webdav)s>
 DocumentRoot "%(document_root)s"
 PidFile "%(pid_file)s"
 DavLockDB "%(davlock_db)s"
@@ -67,6 +93,7 @@ DavLockDB "%(davlock_db)s"
     </LimitExcept>
 
 </Directory>
+</VirtualHost>
 
 ErrorLog "%(error_log)s"
 LogLevel warn
