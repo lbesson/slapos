@@ -60,6 +60,14 @@ class Recipe(GenericBaseRecipe):
         pass
       shutil.copytree(self.options['source'], htdocs_location)
 
+    # Install php.ini
+    php_ini = self.createFile(os.path.join(self.options['php-ini-dir'],
+                                             'php.ini'),
+                                self.substituteTemplate(self.getTemplateFilename('php.ini.in'),
+                                dict(tmp_directory=self.options['tmp-dir']))
+                )
+    path_list.append(php_ini)
+    
     apache_config = dict(
       pid_file=self.options['pid-file'],
       lock_file=self.options['lock-file'],

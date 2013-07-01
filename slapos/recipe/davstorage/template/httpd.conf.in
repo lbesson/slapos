@@ -34,6 +34,7 @@ ServerAdmin %(email_address)s
 # It's safer
 ServerTokens ProductOnly
 PidFile "%(pid_file)s"
+PHPINIDir "%(php_ini_dir)s"
 
 SSLRandomSeed startup builtin
 SSLRandomSeed connect builtin
