@@ -85,6 +85,7 @@ class Recipe(GenericBaseRecipe):
       htpasswd_file=htpasswd_file,
       ssl_certificate=self.options['cert-file'],
       ssl_key=self.options['key-file'],
+      php_ini_dir=self.options['php-ini-dir']
     )
 
     # Create logfiles
