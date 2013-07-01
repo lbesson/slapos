@@ -28,6 +28,7 @@ import subprocess
 import httplib
 import base64
 import os
+import shutil
 
 from slapos.recipe.librecipe import GenericBaseRecipe
 
@@ -50,6 +51,15 @@ class Recipe(GenericBaseRecipe):
                            '-bc', htpasswd_file,
                            user, password
                           ])
+
+    # Copy application if not already existing
+    htdocs_location = self.options['htdocs']
+    if not (os.path.exists(htdocs_location) and os.listdir(htdocs_location)):
+      try:
+        os.rmdir(htdocs_location)
+      except:
+        pass
+      shutil.copytree(self.options['source'], htdocs_location)
 
     # Install php.ini
     php_ini = self.createFile(os.path.join(self.options['php-ini-dir'],
