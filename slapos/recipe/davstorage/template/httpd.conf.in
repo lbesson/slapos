@@ -2,6 +2,7 @@ ServerRoot "%(server_root)s"
 
 Listen [%(ip)s]:%(port_webdav)s
 Listen [%(ip)s]:%(port_ajax)s
+PHPINIDir %(php_ini_dir)s
 
 NameVirtualHost [%(ip)s]:%(port_webdav)s
 NameVirtualHost [%(ip)s]:%(port_ajax)s
@@ -26,6 +27,7 @@ LoadModule mime_module "%(modules_dir)s/mod_mime.so"
 LoadModule dav_module "%(modules_dir)s/mod_dav.so"
 LoadModule dav_fs_module "%(modules_dir)s/mod_dav_fs.so"
 LoadModule dir_module "%(modules_dir)s/mod_dir.so"
+LoadModule php5_module "%(modules_dir)s/libphp5.so"
 
 ServerAdmin %(email_address)s
 
@@ -33,7 +35,6 @@ ServerAdmin %(email_address)s
 # It's safer
 ServerTokens ProductOnly
 PidFile "%(pid_file)s"
-
 
 SSLRandomSeed startup builtin
 SSLRandomSeed connect builtin
