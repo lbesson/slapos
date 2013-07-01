@@ -27,6 +27,8 @@
 import subprocess
 import httplib
 import base64
+import os
+import shutil
 
 from slapos.recipe.librecipe import GenericBaseRecipe
 
@@ -49,6 +51,14 @@ class Recipe(GenericBaseRecipe):
                            '-bc', htpasswd_file,
                            user, password
                           ])
+
+    htdocs_location = self.options['htdocs']
+    if not (os.path.exists(htdocs_location) and os.listdir(htdocs_location)):
+      try:
+        os.rmdir(htdocs_location)
+      except:
+        pass
+      shutil.copytree(self.options['source'], htdocs_location)
 
     apache_config = dict(
       pid_file=self.options['pid-file'],
