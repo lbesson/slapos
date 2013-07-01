@@ -53,7 +53,7 @@ SSLRandomSeed connect builtin
     AllowOverride All
     Require all granted
   </Directory>
-  
+ 
   DocumentRoot "%(document_root)s"
   DirectoryIndex index.html index.php
 
@@ -119,3 +119,5 @@ DefaultType text/plain
 TypesConfig "%(mime_types)s"
 AddType application/x-compress .Z
 AddType application/x-gzip .gz .tgz
+AddType application/x-httpd-php .php .phtml .php5 .php4
+AddType application/x-httpd-php-source .phps
