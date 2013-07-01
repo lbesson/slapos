@@ -2,7 +2,6 @@ ServerRoot "%(server_root)s"
 
 Listen [%(ip)s]:%(port_webdav)s
 Listen [%(ip)s]:%(port_ajax)s
-PHPINIDir %(php_ini_dir)s
 
 NameVirtualHost [%(ip)s]:%(port_webdav)s
 NameVirtualHost [%(ip)s]:%(port_ajax)s
