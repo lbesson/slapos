@@ -38,7 +38,7 @@
   "dbType" : "dirty",
   //the database specific settings
   "dbSettings" : {
-                   "filename" : "var/dirty.db"
+                   "filename" : "${:dirtydb-location}"
                  },
                  
   /* An Example of MySQL Configuration
@@ -105,8 +105,8 @@
   // You can add as many appenders as you want here:
   "logconfig" :
 	{ "appenders": [
-	    { "type": "console" 
-	    //, "category": "access"// only logs pad access
+	    { "type": "console",
+      //  "category": "access"// only logs pad access
 	    }
     /*
 	  , { "type": "file"
@@ -115,9 +115,9 @@
       , "backups": 3 // how many log files there're gonna be at max
       //, "category": "test" // only log a specific category
       }*/
-    /*
-	  , { "type": "logLevelFilter"
-	    , "level": "warn" // filters out all log messages that have a lower level than "error"
+    
+	    /*{ "type": "logLevelFilter",
+	      "level": "warn" // filters out all log messages that have a lower level than "error"
 	    , "appender":
 	      {  Use whatever appender you want here  }
       }*/
