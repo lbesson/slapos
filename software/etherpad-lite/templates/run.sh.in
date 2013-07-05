@@ -29,8 +29,8 @@ if [ "$(id -u)" -eq 0 ] && [ $ignoreRoot -eq 0 ]; then
 fi
 
 #prepare the enviroment
-${etherpad-lite-repository:location}/bin/installDeps.sh $* || exit 1
+${:etherpad-location}/bin/installDeps.sh $* || exit 1
 
 #Move to the node folder and start
 echo "start..."
-${nodejs:location}/bin/node ${etherpad-lite-repository:location}/node_modules/ep_etherpad-lite/node/server.js $*
+${:nodejs-location}/bin/node ${:etherpad-location}/node_modules/ep_etherpad-lite/node/server.js $*
