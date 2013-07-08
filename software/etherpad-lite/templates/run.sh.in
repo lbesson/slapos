@@ -3,9 +3,11 @@
 #Move to the folder where ep-lite is installed
 cd ${:etherpad-location}
 
+cp ${:etherpad-conf-location} ${:etherpad-location}/${:etherpad-conf-name}
+
 #prepare the enviroment
-bin/installDeps.sh -s ${:etherpad-conf-location} || exit 1
+bin/installDeps.sh $* || exit 1
 
 #Move to the node folder and start
 echo "start..."
-${:nodejs-location}/bin/node node_modules/ep_etherpad-lite/node/server.js -s ${:etherpad-conf-location}
+${:nodejs-location}/bin/node node_modules/ep_etherpad-lite/node/server.js $*
