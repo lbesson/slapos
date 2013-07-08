@@ -12,7 +12,7 @@
       "patternProperties": {
         ".*": {
           "description": "Contains the mount-point, cache-size and client-dict received as parameters for current export identifier (client-dict's 'storage' and 'server' entries are overwritten with actual values)",
-          "type": "list"
+          "type": "array"
         }
       },
       "type": "object"
