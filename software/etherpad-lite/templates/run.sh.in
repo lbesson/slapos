@@ -4,8 +4,8 @@
 cd ${:etherpad-location}
 
 #prepare the enviroment
-bin/installDeps.sh $* || exit 1
+bin/installDeps.sh -s ${:etherpad-conf-location} || exit 1
 
 #Move to the node folder and start
 echo "start..."
-${:nodejs-location}/bin/node node_modules/ep_etherpad-lite/node/server.js $*
+${:nodejs-location}/bin/node node_modules/ep_etherpad-lite/node/server.js -s ${:etherpad-conf-location}
