@@ -3,6 +3,8 @@
 #Move to the folder where ep-lite is installed
 cd ${:etherpad-location}
 
+# XXX Vivien: very ugly, definitely need to find a cleaner way
+cp ${:etherpad-deps-script-location} ${:etherpad-location}/bin/installDeps.sh
 cp ${:etherpad-conf-location} ${:etherpad-location}/${:etherpad-conf-name}
 
 #prepare the enviroment
