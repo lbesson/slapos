@@ -7,6 +7,8 @@ cd ${:etherpad-location}
 cp ${:etherpad-deps-script-location} ${:etherpad-location}/bin/installDeps.sh
 cp ${:etherpad-conf-location} ${:etherpad-location}/${:etherpad-conf-name}
 
+export PATH=$PATH:${:postgre-location}/bin
+
 #prepare the enviroment
 bin/installDeps.sh $* || exit 1
 
