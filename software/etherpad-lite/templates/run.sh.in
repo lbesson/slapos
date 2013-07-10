@@ -1,6 +1,8 @@
 #!/bin/sh
 
-cp -R ${:etherpad-location} ${:etherpad-repository-location}
+# Copy repository content from the software release
+mkdir ${:etherpad-repository-location}
+cp -R ${:etherpad-location}/* ${:etherpad-repository-location}
 
 #Move to the folder where ep-lite is installed
 cd ${:etherpad-repository-location}
